@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-   before_action :authenticate_user!, only: [:new, :create]
+   before_action :authenticate_user!
   def index
     @tweets = current_user.tweets
     tweet_ids = []
