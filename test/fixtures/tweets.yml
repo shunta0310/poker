@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  action: MyString
+  rate: 1
+  ninnzuu: 1
+  position: MyString
+  preflop: MyString
+  suits: MyString
+  frop1: 1
+  frop2: 1
+  frop3: 1
+  turn: 1
+  river: 1
+  turn: 1
+  turn2: 1
+  turn3: 1
+  turn4: 1
+
+two:
+  action: MyString
+  rate: 1
+  ninnzuu: 1
+  position: MyString
+  preflop: MyString
+  suits: MyString
+  frop1: 1
+  frop2: 1
+  frop3: 1
+  turn: 1
+  river: 1
+  turn: 1
+  turn2: 1
+  turn3: 1
+  turn4: 1

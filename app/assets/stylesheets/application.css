@@ -1,0 +1,135 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ",
+    Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+
+  /* 用紙の色 (わずかに黄みがかった白) */
+  background-color: #fffff8; 
+  
+  /* 罫線の設定 */
+  /* 横線（水色の罫線）を25px間隔で繰り返す */
+  background-image:  
+    /* 横線（罫線）のシミュレーション */
+    linear-gradient(to bottom, #add8e6 1px, transparent 1px);
+    
+  /* 縦線の位置調整 (左端から約50pxの位置に赤線を配置) */
+  background-position: 50px 0, 0 0; 
+  
+  /* 縦線と横線のサイズ/間隔調整 */
+  /* 縦線: 50pxの横幅で1pxの線と残りの透明な部分 */
+  /* 横線: 25pxの縦幅で1pxの線と残りの透明な部分 */
+  background-size: 50px 100%, 100% 25px; 
+  
+  /* フォント（メモ帳に似合う手書き風フォントがあれば指定） */
+  font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif;
+  
+  /* 縦線と横線が混在するため、背景を固定してスクロール時に線がずれないようにする */
+  background-attachment: fixed;
+}
+/* サイト内の主要コンテンツエリアの調整 */
+/* コンテンツエリアが罫線の上に「浮いている」ように見せる */
+.container, .main-content {
+  background-color: transparent; /* コンテンツ自体の背景は透明か、白に戻す */
+  padding: 20px;
+  /* メモ帳の罫線の上に配置されているように見せるため、背景を透明にして罫線を見せる */
+}
+
+
+header {
+  background-color: #dad190;
+  height: 80px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header a {
+  color: white; 
+  text-decoration: none; 
+}
+.highlight-red {
+    color: #cc0000; /* 濃い赤色 */
+    /* またはより鮮やかな赤: color: #ff0000; */
+    font-weight: bold; /* オプション: さらに目立たせる */
+}
+header h1 {
+  color: white;
+  margin-left: 20px;
+}
+.header-list {
+  display: flex;
+  align-items: center;
+}
+header ul {
+  display: flex;
+}
+header li {
+  list-style: none;
+  margin-right: 40px;
+}
+
+
+.btn,
+input[type="submit"],
+.home a:not(.home form a) /* フォーム内リンクを除く全リンクボタンに適用 */
+{
+  /* 共通設定 */
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none; /* リンクの下線を消す */
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+/* リンクとボタンのカーソルの設定 */
+.btn:hover,
+input[type="submit"]:hover,
+.home a:hover {
+  transform: translateY(-2px); /* ホバー時に少し浮き上がらせる */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* クリック時の視覚効果 */
+.btn:active,
+input[type="submit"]:active,
+.home a:active {
+  transform: translateY(0); /* クリック時に押し込まれたように見せる */
+  box-shadow: none;
+}
+
+
+footer {
+  color: white;
+  height: 30px;
+  background-color: #cfc472;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: right;
+  position: fixed;
+  justify-content: flex-end;
+}

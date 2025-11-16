@@ -1,0 +1,2 @@
+class TweetTagRelation < ApplicationRecor
+end

@@ -1,0 +1,108 @@
+/* フォーム全体のコンテナ */
+.form-for { /* form_forが生成する<form>タグ自体、またはその親要素に適用 */
+  max-width: 500px; /* フォームの最大幅を設定 */
+  margin: 30px auto; /* ページの中央に配置し、上下に余白 */
+  padding: 30px;
+  background-color: #ffffff; /* フォームの背景色 */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ページタイトル */
+h3 {
+  text-align: left;
+  color: #264653; /* Dark Blue/Gray */
+  margin-bottom: 30px;
+  border-bottom: 3px solid #2a9d8f; /* Accent Green */
+  padding-bottom: 10px;
+}
+
+/* リンクボタンのスタイル */
+a {
+  display: inline-block;
+  margin-top: 20px;
+  color: #E63946; /* Accent Red */
+  text-decoration: none;
+  font-weight: bold;
+}
+/* 各入力フィールドグループ */
+.field {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-left: 5px solid #f4a261; /* Orange accent for grouping */
+  border-radius: 4px;
+}
+
+/* ラベルのスタイル */
+.field label {
+  display: block; /* ラベルと入力欄を上下に分ける */
+  font-weight: bold;
+  color: #264653;
+  margin-bottom: 8px;
+  font-size: 0.95em;
+}
+
+/* 入力欄（テキストフィールド、数値フィールド、セレクトボックス）の共通スタイル */
+.field input[type="text"],
+.field input[type="number"],
+.field select {
+  width: 100%; /* 親要素の幅いっぱいに広げる */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* paddingやborderを幅に含める */
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: #2A9D8F; /* フォーカス時にAccent Green */
+  outline: none;
+  box-shadow: 0 0 5px rgba(42, 157, 143, 0.5);
+}
+/* MYハンドスート（:markと:suit）の横並び */
+/* ラベルとセレクトボックスを横並びにするためのコンテナ設定 */
+.field:has(select[name$="[mark]"], select[name$="[suit]"]) {
+    display: flex;
+    flex-wrap: wrap; /* 必要に応じて折り返す */
+    align-items: center; /* 垂直方向の中央揃え */
+    gap: 10px; /* 要素間の隙間 */
+}
+
+/* 横並びになっているセレクトボックスとそのラベルの幅調整 */
+.field:has(select[name$="[mark]"], select[name$="[suit]"]) label {
+    display: inline; /* ラベルをインライン要素に戻す */
+    margin-bottom: 0;
+    margin-left: 30px; /* 調整 */
+    font-weight: normal;
+}
+
+.field:has(select[name$="[mark]"], select[name$="[suit]"]) select {
+    width: auto; /* 幅の自動調整 */
+    flex-grow: 1; /* 均等にスペースを埋める */
+    min-width: 100px; /* 最小幅 */
+}
+
+/* フロップ、ターン、リバーのカード入力欄（ランクとマーク）の横並びも同様 */
+.field:has(select[name$="[frop1]"], select[name$="[turn]"], select[name$="[river]"],select[name$="[frop2]"],select[name$="[frop3]"]) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.field:has(select[name$="[frop1]"], select[name$="[turn]"], select[name$="[river]"],select[name$="[frop2]"],select[name$="[frop3]"]) label {
+    display: inline;
+    margin-bottom: 0;
+    margin-left: 10px;
+    font-weight: normal;
+}
+
+.field:has(select[name$="[frop1]"], select[name$="[turn]"], select[name$="[river]"],select[name$="[frop2]"],select[name$="[frop3]"]) select {
+    width: auto;
+    flex-grow: 1;
+    min-width: 80px;
+}

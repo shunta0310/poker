@@ -1,0 +1,142 @@
+
+<div class="tweets-container">
+<%= link_to "ホーム", tweets_path %>
+
+
+<% if user_signed_in? %>
+  <%= link_to "マイページへ", user_path(current_user.id) %>
+
+</div>
+
+
+
+
+
+<div class="graph-wrapper">
+  <%# All Action Rate %>
+  <div class="flop-graph1">
+    <div class="graph-title">All Action Rate</div>
+    <%= pie_chart({
+      "チェック" => @check_percent,
+      "ベット" => @bet_percent,
+      "コール" => @call_percent,
+      "レイズ" => @raise_percent,
+      "フォールド" => @fold_percent
+    }, donut: true, library: { chart: { width: 300, height: 300 } },
+       colors: ["#6b8e23", "#ffa500", "#2db386", "#f08080","#4682b4"]) %>
+  </div>
+  <div class="phase-graphs-container">
+      <%# 左：Preflop Action Rate %>
+      <div class="flop-graph2">
+        <div class="graph-title">Prefrop Action Rate</div>
+        <%= pie_chart({
+          "チェック" => @check_percent1,
+          "ベット" => @bet_percent1,
+          "コール" => @call_percent1,
+          "レイズ" => @raise_percent1,
+          "フォールド" => @fold_percent1
+        }, donut: true, library: { chart: { width: 300, height: 300 } },
+          colors: ["#6b8e23", "#ffa500", "#2db386", "#f08080","#4682b4"]) %>
+          </div>
+        <%# 左：Frop Action Rate %>
+      <div class="flop-graph3">
+        <div class="graph-title">Flop Action Rate</div>
+        <%= pie_chart({
+          "チェック" => @check_percent2,
+          "ベット" => @bet_percent2,
+          "コール" => @call_percent2,
+          "レイズ" => @raise_percent2,
+          "フォールド" => @fold_percent2
+        }, donut: true, library: { chart: { width: 300, height: 300 } },
+          colors: ["#6b8e23", "#ffa500", "#2db386", "#f08080","#4682b4"]) %>
+          </div>
+        <%# 左：Turn Action Rate %>
+      <div class="flop-graph4">
+        <div class="graph-title">Turn Action Rate</div>
+        <%= pie_chart({
+          "チェック" => @check_percent3,
+          "ベット" => @bet_percent3,
+          "コール" => @call_percent3,
+          "レイズ" => @raise_percent3,
+          "フォールド" => @fold_percent3
+        }, donut: true, library: { chart: { width: 300, height: 300 } },
+          colors: ["#6b8e23", "#ffa500", "#2db386", "#f08080","#4682b4"]) %>
+          </div>
+      <%# 左：River Action Rate %>
+      <div class="flop-graph5">
+        <div class="graph-title">River Action Rate</div>
+          <%= pie_chart({
+            "チェック" => @check_percent4,
+            "ベット" => @bet_percent4,
+            "コール" => @call_percent4,
+            "レイズ" => @raise_percent4,
+            "フォールド" => @fold_percent4
+          }, donut: true, library: { chart: { width: 300, height: 300 } },
+            colors: ["#6b8e23", "#ffa500", "#2db386", "#f08080","#4682b4"]) %>
+            </div>
+  </div>
+
+<div class="toukou"> 
+
+<h4>投稿を検索</h4>
+ <%= form_tag({controller:"tweets",action:"index"}, method: :get) do %>
+   <%= text_field_tag :search %>
+   <%= submit_tag '検索する'  %>
+<% end %>
+ <h5>投稿一覧<h5>
+
+  <% @tweets.each do |t| %>
+
+<% if user_signed_in? && current_user.id == t.user_id %> 
+
+    <%= link_to t.user.name, user_path(t.user.id) %>
+
+    <div class="tweet">
+      <%= t.shurui %>
+      <%= t.rate %>
+      人数:<%= t.ninnzuu %>
+      ポジション:<%= t.position %>
+      
+      <div class="myhand">
+        MY hand:<%= t.myhand %>
+        <%= t.mark %>
+        <%= t.suit %>
+      </div>
+      ボード
+      <div class="card-container">
+    <div class="card">
+        <p class="label"><%= t.frop1 %></p>
+        <p class="value"><%= t.frop1m %></p>
+    </div>
+    <div class="card">
+        <p class="label"><%= t.frop2 %></p>
+        <p class="value"><%= t.frop2m %></p>
+    </div>
+    <div class="card">
+        <p class="label"><%= t.frop3 %></p>
+        <p class="value"><%= t.frop3m %></p>
+    </div>
+    <div class="card">
+        <p class="label"><%= t.turn %></p>
+        <p class="value"><%= t.turnm %></p>
+    </div>
+    <div class="card">
+        <p class="label"><%= t.river %></p>
+        <p class="value"><%= t.riverm %></p>
+    </div>
+</div>
+      <%= t.turn1 %>
+      <%= t.turn2 %>
+      <%= t.turn3 %>
+      <%= t.turn4 %>
+    </div>
+
+    <%= link_to "編集する", edit_tweet_path(t.id) %>
+    <%= button_to "削除する", tweet_path(t.id), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+  <% end %>
+
+
+  <% end %>
+  </div>
+  </div>
+<% end %>
